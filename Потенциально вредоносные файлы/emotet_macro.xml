@@ -1,0 +1,6 @@
+Legitimate document
+Sub AutoOpen
+CreateObject
+Shell
+powershell.exe -ep bypass
+End

